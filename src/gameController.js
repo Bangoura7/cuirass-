@@ -21,12 +21,16 @@ export class GameController {
     this.gameOver = false;
     DOMController.hideGameOver();
 
-    // Créer les joueurs
-    this.player1 = new Player('Joueur', 'real');
+    // Créer les joueurs (ou utiliser le joueur existant avec ses navires)
+    if (!this.player1) {
+      this.player1 = new Player('Joueur', 'real');
+      // Placer les navires uniquement si pas déjà placés
+      if (this.player1.gameboard.ships.length === 0) {
+        this._placeShipsForPlayer(this.player1);
+      }
+    }
+    
     this.player2 = new Player('Ordinateur', 'computer');
-
-    // Placer les navires avec des positions prédéfinies
-    this._placeShipsForPlayer(this.player1);
     this._placeShipsForPlayer(this.player2);
 
     // Le joueur humain commence
@@ -152,8 +156,8 @@ export class GameController {
     // Désactiver les clics pendant le tour de l'ordinateur
     DOMController.setEnemyBoardClickable(false);
 
-    // L'ordinateur attaque
-    const attack = this.player2.randomAttack(this.player1);
+    // L'ordinateur attaque avec l'IA intelligente
+    const attack = this.player2.smartAttack(this.player1);
 
     // Afficher le résultat
     const message = attack.result === 'hit'

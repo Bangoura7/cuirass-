@@ -143,5 +143,53 @@ export const DOMController = {
         enemyBoard.classList.remove('active');
       }
     }
+  },
+
+  /**
+   * Crée un plateau vide pour le placement
+   * @param {HTMLElement} container - Le conteneur DOM
+   * @param {number} size - Taille du plateau
+   */
+  createEmptyBoard(container, size = 10) {
+    console.log('📋 Création du plateau vide, taille:', size);
+    container.innerHTML = '';
+    const boardElement = document.createElement('div');
+    boardElement.classList.add('board');
+
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.x = x;
+        cell.dataset.y = y;
+        boardElement.appendChild(cell);
+      }
+    }
+
+    container.appendChild(boardElement);
+    console.log('✅ Plateau créé avec', size * size, 'cellules');
+  },
+
+  /**
+   * Affiche les navires sur un plateau
+   * @param {HTMLElement} container - Le conteneur du plateau
+   * @param {Array} ships - Liste des navires avec leurs coordonnées
+   * @param {boolean} hideShips - Masquer les navires (pour plateau ennemi)
+   */
+  renderShips(container, ships, hideShips = false) {
+    if (hideShips) return;
+
+    const cells = container.querySelectorAll('.cell');
+    
+    ships.forEach(({ coordinates }) => {
+      coordinates.forEach(([x, y]) => {
+        const cell = Array.from(cells).find(c => 
+          parseInt(c.dataset.x) === x && parseInt(c.dataset.y) === y
+        );
+        if (cell) {
+          cell.classList.add('ship');
+        }
+      });
+    });
   }
 };

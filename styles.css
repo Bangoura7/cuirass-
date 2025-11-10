@@ -15,8 +15,17 @@ body {
   padding: 20px;
 }
 
+/* Gestion des écrans */
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   background: white;
   border-radius: 20px;
@@ -35,6 +44,12 @@ header h1 {
   font-size: 2.5rem;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h2 {
+  color: #667eea;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
 .game-info {
@@ -354,4 +369,122 @@ header h1 {
   .btn {
     width: 100%;
   }
+}
+
+/* Styles pour l'écran de placement */
+.placement-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.ship-info p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+.ship-info span {
+  font-weight: bold;
+  color: #667eea;
+}
+
+.placement-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.ships-list {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.ships-list h3 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.ships-list ul {
+  list-style: none;
+}
+
+.ship-item {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  background: white;
+  border: 2px solid #dee2e6;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ship-item.active {
+  border-color: #667eea;
+  background: #e7eafd;
+  font-weight: bold;
+}
+
+.ship-item.placed {
+  opacity: 0.5;
+  text-decoration: line-through;
+  background: #e9ecef;
+}
+
+.ship-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+.board-header h3 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.hint {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+#start-game-btn {
+  width: 100%;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  padding: 15px;
+}
+
+#start-game-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hover effect pour les cellules en placement */
+.cell.hover-preview {
+  background-color: rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+.cell.hover-invalid {
+  background-color: rgba(220, 53, 69, 0.3);
+  border-color: #dc3545;
+}
+
+.stats {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #495057;
+}
+
+.stats span {
+  color: #667eea;
 }

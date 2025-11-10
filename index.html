@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bataille Navale</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚓ Bataille Navale ⚓</h1>
+      <div class="game-info">
+        <p>Tour du joueur : <span id="current-player">Joueur</span></p>
+      </div>
+    </header>
+
+    <main>
+      <div id="message" class="message info">
+        Bienvenue ! Cliquez sur "Nouvelle Partie" pour commencer.
+      </div>
+
+      <div class="game-boards">
+        <div class="board-container">
+          <h2>Votre Plateau</h2>
+          <div id="player-board" class="board-wrapper"></div>
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-color ship"></div>
+              <span>Navire</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color hit"></div>
+              <span>Touché</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color miss"></div>
+              <span>Manqué</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="board-container">
+          <h2>Plateau Ennemi</h2>
+          <div id="enemy-board" class="board-wrapper"></div>
+          <p class="hint">Cliquez sur une case pour attaquer</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="new-game-btn" class="btn btn-primary">Nouvelle Partie</button>
+        <button id="restart-btn" class="btn btn-secondary">Recommencer</button>
+      </div>
+    </main>
+
+    <!-- Écran de fin de partie -->
+    <div id="game-over" class="game-over-screen hidden">
+      <div class="game-over-content">
+        <h2>Partie Terminée !</h2>
+        <p class="winner">🏆 <span id="winner-name"></span> a gagné ! 🏆</p>
+        <button id="play-again-btn" class="btn btn-primary">Rejouer</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
